@@ -9,6 +9,6 @@ shinyUI(pageWithSidebar(
     mainPanel(
         h4("We predict your next word to be:"),
         verbatimTextOutput("wordSuggest"),
-        p("For documentation on how to use this app, see: URL")
+        p("For documentation on this app, see: http://rpubs.com/rhzhang/Word_Prediction_Slidify")
         )
     ))
