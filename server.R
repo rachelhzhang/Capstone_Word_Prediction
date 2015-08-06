@@ -1,11 +1,12 @@
 library(shiny)
 
 # Load bigram, trigram, and quadrigram lookup tables
-setwd("C:/Users/rzhang124/Documents/GitHub/Capstone_Word_Prediction")
+#setwd("C:/Users/rzhang124/Documents/GitHub/Capstone_Word_Prediction")
 
 totalTrainBiLookup <- read.table(file = "totalTrainBiLookup.csv", header = T)
 totalTrainTriLookup <- read.table(file = "totalTrainTriLookup.csv", header = T)
 totalTrainQuadLookup <- read.table(file = "totalTrainQuadLookup.csv", header = T)
+totalTrainUniLookup <- read.table(file = "totalTrainUniLookup.csv", header = T, stringsAsFactors = F)
 
 # Create function for creating corpus of a text file
 createCorpus <- function(x) {
@@ -68,7 +69,8 @@ bigramLookup <- function(gram3) {
     topTarget <- as.character(totalLookup$target[1])
     
     if(is.na(topTarget)) {
-        topTarget <- "Text prediction not available; please type more text or modify your phrase"
+        rand <- sample(1:10, 1)
+        topTarget <- totalTrainUniLookup[rand, ]
     }
     return(topTarget)
 }
